@@ -44,10 +44,13 @@ app.get('/api/quotes/random', (req, res) => {
         .catch(err => res.status(500).json({ error: err.message }));
 });
 
-connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log('Listening on port ${PORT}');
-  })
-})
+// Define the port to listen on
+// const PORT = 3000;
+
+// Start the Express app listening on the defined port
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+});
+
 
 
