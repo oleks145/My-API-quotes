@@ -4,10 +4,6 @@ const mongoose = require('mongoose');
 
 const uri = 'mongodb+srv://Oleks145:1405@cluster0.t4vboa3.mongodb.net/?retryWrites=true&w=majority';
 
-
-// Connect to the database
-mongoose.connect(process.env.mongodb+srv://Oleks145:1405@cluster0.t4vboa3.mongodb.net/?retryWrites=true&w=majority, { useNewUrlParser: true });
-
 // Create a new MongoDB client
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
