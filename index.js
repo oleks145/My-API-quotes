@@ -2,9 +2,14 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-// Connect to the database
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+const uri = 'mongodb+srv://Oleks145:1405@cluster0.t4vboa3.mongodb.net/?retryWrites=true&w=majority';
 
+
+// Connect to the database
+mongoose.connect(process.env.mongodb+srv://Oleks145:1405@cluster0.t4vboa3.mongodb.net/?retryWrites=true&w=majority, { useNewUrlParser: true });
+
+// Create a new MongoDB client
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Define a schema for the quotes collection
 const quoteSchema = new mongoose.Schema({
