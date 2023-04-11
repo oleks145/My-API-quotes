@@ -3,7 +3,8 @@ const app = express();
 const mongoose = require('mongoose');
 
 // Connect to the database
-mongoose.connect('mongodb://localhost/quotes', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+
 
 // Define a schema for the quotes collection
 const quoteSchema = new mongoose.Schema({
