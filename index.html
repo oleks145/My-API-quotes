@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TPB Quote Generator</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Trailer Park Boys Quotes</h1>
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    <div id="quote">
+      <p><%= quote.text %></p>
+      <p id="author">- <%= quote.author %></p>
+    </div>
+    <button id="new-quote-button">New Quote</button>
+  </div>
+  
+  <script>
+const newQuoteButton = document.getElementById('new-quote-button');
+const quoteElement = document.getElementById('quote');
+const spinnerElement = document.querySelector('.spinner');
+
+newQuoteButton.addEventListener('click', () => {
+  // Show the spinner
+  spinnerElement.style.display = 'block';
+
+  // Hide the quote element
+  quoteElement.style.display = 'none';
+
+  // Fetch new quote after 2 seconds 
+  setTimeout(() => {
+    fetch('/api/quotes/random')
+      .then(response => response.json())
+      .then(data => {
+        quoteElement.innerHTML = `
+          <p>${data.text}</p>
+          <p>- ${data.author}</p>
+        `;
+        quoteElement.style.display = 'block'; // Show the quote element
+        spinnerElement.style.display = 'none'; // Hide the spinner
+      })
+      .catch(error => console.error(error));
+  }, 2000); // 2 seconds delay
+});
+
+  </script>
+</body>
+</html>
+
