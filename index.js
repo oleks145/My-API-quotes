@@ -48,9 +48,10 @@ app.get('/api/quotes/random', (req, res) => {
 // const PORT = 3000;
 
 // Start the Express app listening on the defined port
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
+app.listen(process.env.PORT || 3000, function() {
+    console.log("Server is running on port 3000.")
 });
+
 
 
 
